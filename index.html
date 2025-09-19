@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@master/dist/aframe-master.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.2/aframe/build/aframe-ar-nft.js"></script>
+
+    <style>
+      .arjs-loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(250, 249, 249, 0.8);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .arjs-loader div {
+        text-align: center;
+        font-size: 1.25em;
+        color: black;
+      }
+    </style>
+    <title>Winni Winni</title>
+  </head>
+  <body style="margin: 0px; overflow: hidden">
+    <div id="loadingOverlay" class="arjs-loader">
+      <div>Loading, please wait...</div>
+    </div>
+
+    <div
+      id="startOverlay"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        color: white;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        font-size: 24px;
+        text-align: center;
+        cursor: pointer;
+      "
+    >
+      Tap to Start Experience
+    </div>
+
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      renderer="logarithmicDepthBuffer: true;"
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+      touch-action="none"
+    >
+      <a-entity light="type: ambient; intensity: 1"></a-entity>
+      <a-assets>
+        <video id="video" src="./Assets/Winni Video.mp4"></video>
+      </a-assets>
+
+      <a-nft
+        id="nftMarker"
+        type="nft"
+        url="./Assets/Winni"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
+      >
+        <a-entity
+          id="magazinePage"
+          geometry="primitive: plane; width: 200; height: 240"
+          material="src: #video"
+          position="120 -30 -240"
+          rotation="-90 0 0"
+        >
+        </a-entity>
+      </a-nft>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
