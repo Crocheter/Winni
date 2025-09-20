@@ -74,7 +74,7 @@
       <a-assets> </a-assets>
 
       <a-nft
-        id="nftMarker"
+        id="marker"
         type="nft"
         url="./Assets/Winni"
         smooth="true"
@@ -93,5 +93,20 @@
 
       <a-entity camera></a-entity>
     </a-scene>
+
+    <script>
+      const videoEl = document.querySelector("#video");
+      const markerEl = document.querySelector("#marker");
+
+      markerEl.addEventListener("markerFound", () => {
+        // Start playing when marker is visible
+        videoEl.play();
+      });
+
+      markerEl.addEventListener("markerLost", () => {
+        // Pause when marker is lost (optional)
+        videoEl.pause();
+      });
+    </script>
   </body>
 </html>
