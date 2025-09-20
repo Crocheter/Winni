@@ -83,7 +83,7 @@
         smoothThreshold="5"
       >
         <a-video
-          src="video"
+          src="#video"
           width="720"
           height="200"
           position="120 -30 -240"
@@ -106,6 +106,17 @@
       markerEl.addEventListener("markerLost", () => {
         // Pause when marker is lost (optional)
         videoEl.pause();
+      });
+
+      const startOverlay = document.getElementById("startOverlay");
+      window.addEventListener("load", () => {
+        document.getElementById("loadingOverlay").style.display = "none";
+        startOverlay.style.display = "flex";
+      });
+      startOverlay.addEventListener("click", () => {
+        videoEl.play().then(() => {
+          startOverlay.style.display = "none";
+        });
       });
     </script>
   </body>
