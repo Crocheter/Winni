@@ -54,15 +54,6 @@
       Tap to Start Experience
     </div>
 
-    <video
-      id="video"
-      src="./Assets/Winni Video.mp4"
-      loop
-      muted
-      playsinline
-      crossorigin="anonymous"
-    ></video>
-
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
@@ -71,7 +62,9 @@
       touch-action="none"
     >
       <a-entity light="type: ambient; intensity: 1"></a-entity>
-      <a-assets> </a-assets>
+      <a-assets>
+        <video id="video" src="./Assets/Winni Video.mp4"></video>
+      </a-assets>
 
       <a-nft
         id="marker"
